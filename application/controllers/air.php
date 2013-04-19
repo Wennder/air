@@ -5,6 +5,7 @@
             $this->load->view('common/header');
             $this->load->view('mainView');
             $this->load->view('common/footer');
+            //juj
             
     }
     
