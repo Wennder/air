@@ -8,7 +8,10 @@
             $response->success = true;
             $response->type = $type;
             $response->seats = $seats;
-            $response->airline = $airline;
+            
+            $myAir = $this->db->select('name')->from('airline')->where('airline.deleted = 0 AND id='.$airline)->get()->row();
+            
+            $response->airline = $myAir->name;
             return $response;
         }
         

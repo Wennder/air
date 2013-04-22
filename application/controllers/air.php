@@ -5,10 +5,29 @@
             $this->load->view('common/header');
             $this->load->view('mainView');
             $this->load->view('common/footer');
-            //juj
-            
     }
     
+    // ==============================Задание 1======================================
+    
+    public function pass_to_voyage(){
+        $this->load->model('passtovoyagemodel');
+
+        $myResult = $this->passtovoyagemodel->selectVoyage();
+        
+        $this->load->view('common/header');
+        $this->load->view('voyageSelect', array('voyageSelect'=>$myResult));
+        $this->load->view('common/footer');
+        
+    }
+    
+    public function qwerty(){
+        $this->load->model('passtovoyagemodel');
+        $this->load->library('input');
+        $myIdVoyage = $this->input->get_post('myIdVoyage');
+        $response = $this->passtovoyagemodel->getPass($myIdVoyage);
+        
+        echo json_encode($response);
+    }
     // ------------------------------Авиакомпании-----------------------------------
     
     public function airlineView(){
